@@ -1,33 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int func(int a, int b, int c)
+{
+    if ((a % 2) || (b % 2) || (c % 2))
+        return 0;
+    if (a == b && b == c)
+        return -1;
+    return (func((b + c) / 2, (a + c) / 2, (a + b) / 2) + 1);
+}
+
 int main()
 {
     int a, b, c;
     cin >> a >> b >> c;
-    if ((a == b && b == c) && (a % 2 == 0) && (b % 2 == 0) && (c % 2) == 0)
-    {
-        cout << -1 << endl;
-        return 0;
-    }
-    int sum = 0;
-    while (1)
-    {
-        if ((a % 2) || (b % 2) || (c % 2))
-        {
-            cout << sum << endl;
-            break;
-        }
-        else
-        {
-            int a_sub, b_sub, c_sub;
-            a_sub = b / 2 + c / 2;
-            b_sub = a / 2 + c / 2;
-            c_sub = a / 2 + b / 2;
-            a = a_sub;
-            b = b_sub;
-            c = c_sub;
-        }
-        sum++;
-    }
+    int ans = func(a, b, c);
+    cout << ans << endl;
 }
