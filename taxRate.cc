@@ -5,14 +5,11 @@ int main()
 {
     int n;
     cin >> n;
-    for (int i = 1; i <= n; i++)
-    {
-        int tmp = i * 1.08;
-        if (tmp == n)
-        {
-            cout << i << endl;
-            return 0;
-        }
-    }
-    cout << ":(" << endl;
+    int x = n / 1.08;
+    if ((int)(x * 1.08) == n)
+        cout << x << endl;
+    else if ((int)((x + 1) * 1.08) == n)
+        cout << x + 1 << endl;
+    else
+        cout << ":(" << endl;
 }
